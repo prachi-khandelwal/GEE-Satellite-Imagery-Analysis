@@ -1,0 +1,47 @@
+// AIM: In this file we're going to learn the use of EE loops functionality
+
+// 1. FOR LOOPS (we'll use *MAP*)
+var list = ee.List.sequence(1,10);
+
+// Let's make a function for squaring the List values
+var squared_output = function(number){
+  var square = ee.Number(number).pow(2);
+  return square;
+};
+
+// Let's call the function
+var squared_list = list.map(squared_output);
+// print(squared_list);
+
+// 2. If-Else Loops
+// make a function to compute Odd/Even numbers and square only the odd numbers.
+var oddNumbers = function oddSelector(number){
+  number = ee.Number(number);
+  var remainder = number.mod(2);
+  return number.multiply(remainder);
+  
+}
+
+var oddList = list.map(oddNumbers).removeAll([0]);
+var Sq_oddList = oddList.map(squared_output)
+// print(Sq_oddList);
+
+var collection = ee.ImageCollection('LANDSAT/LC08/C01/T1_TOA');
+
+// Divide the collection into 2 subsets and apply a different algorithm on them.
+var subset1 = collection.filter(ee.Filter.lt('SUN_ELEVATION', 40));
+var subset2 = collection.filter(ee.Filter.gte('SUN_ELEVATION', 40));
+
+var processed1 = subset1.map(function(image) {
+  return image.multiply(2);
+});
+var processed2 = subset2;
+
+// Merge the collections to get a single collection.
+var final = processed1.merge(processed2);
+print('Original collection size', collection.size());
+print('Processed collection size', final.size());
+
+
+
+

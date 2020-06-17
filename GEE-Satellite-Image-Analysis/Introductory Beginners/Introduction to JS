@@ -1,0 +1,58 @@
+// Hello World Program !
+print("Hello world!");
+
+// Data type in Js
+// String
+var string = "Hola!"
+print(string)
+
+// numerical
+var num = 42;
+print(num);
+
+// List
+var list = [1, 2, 3, 4];
+print(list)
+
+// another way of using list
+var list2 = ['a', 'b', 'c', 'd'];
+print(list2)
+
+// *TIT-BIT* Checking type of a variable
+var type = typeof(list2);
+print(type) //OBjECT
+
+// DICTIONARY has a key-value pair, they are called objects
+var dict = {
+    string_type : "HOLA AMIGO!",
+    num_type  : 2,
+    list_type : ['Uno', 'dos', 'tres'],
+    otra_list_type : [1, 2, 3, 4]
+}
+
+// Accessing key-value pair in dictionary
+print("SElect string type in dict",dict.string_type); //Using ' . '
+print("Another Way of selecting from dict",dict["string_type"]); //Using []
+print("Select 2 otra list type from dict",dict['otra_list_type'][1]);
+print("Select 2 otra list type from dict",dict.otra_list_type[3]);
+
+
+// Functions
+var aString = ee.Algorithms.String(42);
+print(aString);  //This is the example of function that reflect itself
+
+
+
+// END OF JS INTRODUCTION 
+// HURRRAYYY!
+
+
+
+
+
+
+
+
+
+
+
